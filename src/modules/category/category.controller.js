@@ -26,8 +26,19 @@ const getSingleCategory = async (req, res) => {
   });
 };
 
+const updateCategory = async (req, res) => {
+  const id = req.params.id;
+  const { ...updatedData } = req.body;
+  const result = await CategoryServices.categoryUpdate(id, updatedData);
+  res.status(200).json({
+    status: "success",
+    data: result,
+  });
+};
+
 module.exports.CategoryController = {
   addCategory,
   getAllCategories,
   getSingleCategory,
+  updateCategory,
 };

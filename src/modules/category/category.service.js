@@ -15,8 +15,16 @@ const singleCategory = async (id) => {
   return result;
 };
 
+const categoryUpdate = async (id, payload) => {
+  const result = await Categories.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  });
+  return result;
+};
+
 module.exports.CategoryServices = {
   createCategory,
   getCategory,
   singleCategory,
+  categoryUpdate,
 };
