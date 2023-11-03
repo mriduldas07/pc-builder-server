@@ -9,7 +9,10 @@ const createProduct = async (payload) => {
 };
 
 const getProducts = async () => {
-  const result = await Products.find().populate("category", "-_id -products");
+  const result = await Products.find()
+    .sort({ _id: -1 })
+    .limit(6)
+    .populate("category", "-_id -products");
   return result;
 };
 
